@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public float tileSize = 1f; // Adjust this value based on your tile size
     private InputManager inputManager;
     private Queue<string> movementQueue = new Queue<string>();
-
+    private bool cd = false; // set cooldown before walk;
+    public float walkspeed = 1f;
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -19,11 +21,12 @@ public class PlayerController : MonoBehaviour
         {
             EnqueueMovementHistory();
         }
-
+        
         // Move the player if there are movements in the queue
         MovePlayer();
+        
     }
-
+    
     void EnqueueMovementHistory()
     {
         // Retrieve the movement history from the InputManager
@@ -38,11 +41,12 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        if (movementQueue.Count > 0)
+        if (movementQueue.Count > 0 && !cd)
         {
+            // start wait event
+            StartCoroutine(Waitdelay());
             // Dequeue the next movement direction
             string direction = movementQueue.Dequeue();
-
             // Move the player based on the direction
             switch (direction)
             {
@@ -60,5 +64,11 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+    }
+    IEnumerator Waitdelay()
+    {   
+        cd = true; // on cooldown time
+        yield return new WaitForSeconds(walkspeed); // wait for walkspeed seconds
+        cd = false; // cooldown finish
     }
 }
