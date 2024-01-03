@@ -5,6 +5,11 @@ public class InputManager : MonoBehaviour
 {
     private List<string> movementHistory = new List<string>();
 
+    private Showlist ShowList;
+
+    void Start(){
+        ShowList = FindObjectOfType<Showlist>();
+    }
     void Update()
     {
         HandleInput();
@@ -13,6 +18,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowAndResetMovementHistory();
+            ShowList.ClearList();
         }
     }
 
@@ -21,18 +27,22 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             movementHistory.Add("MoveUp");
+            ShowList.PopulateList();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             movementHistory.Add("MoveDown");
+            ShowList.PopulateList();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             movementHistory.Add("MoveLeft");
+            ShowList.PopulateList();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             movementHistory.Add("MoveRight");
+            ShowList.PopulateList();
         }
     }
 
