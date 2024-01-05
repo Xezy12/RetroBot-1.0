@@ -1438,10 +1438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782dc20f10a15d64488173acd362e43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listItemPrefab: {fileID: 7568493850662048348, guid: e2c051f0eeffb2449b81ba3593a2a877, type: 3}
+  listItemPrefab: {fileID: 1139557838327558970, guid: e1d2d086100a3cf46a6873a25d70f11c, type: 3}
   contentPanel: {fileID: 186918937}
   itemList: []
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 1995192667}
   y: 200
   x: -500
   startY: 0
