@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     }
     void Update()
     {
-        HandleInput();
+        // HandleInput(); not in use
 
         // Check if the Spacebar is pressed
         if (Input.GetKeyDown(KeyCode.Space))
@@ -22,30 +22,28 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    /*
     void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            movementHistory.Add("MoveUp");
-            ShowList.PopulateList();
+            Up();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            movementHistory.Add("MoveDown");
-            ShowList.PopulateList();
+            Down();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            movementHistory.Add("MoveLeft");
-            ShowList.PopulateList();
+            Left();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            movementHistory.Add("MoveRight");
-            ShowList.PopulateList();
+            Right();
         }
     }
-
+    */
+    
     // You can use this method to retrieve the movement history from other scripts
     public List<string> GetMovementHistory()
     {
@@ -53,7 +51,7 @@ public class InputManager : MonoBehaviour
     }
 
     // Display and reset the movement history
-    void ShowAndResetMovementHistory()
+    public void ShowAndResetMovementHistory()
     {
         Debug.Log("Movement History:");
 
@@ -64,5 +62,29 @@ public class InputManager : MonoBehaviour
 
         // Reset the movement history
         movementHistory.Clear();
+    }
+
+    public void Up()
+    {
+        movementHistory.Add("MoveUp");
+        ShowList.PopulateList();
+    }
+
+    public void Down()
+    {
+        movementHistory.Add("MoveDown");
+        ShowList.PopulateList();
+    }
+
+    public void Left()
+    {
+        movementHistory.Add("MoveLeft");
+        ShowList.PopulateList();
+    }
+
+    public void Right()
+    {
+        movementHistory.Add("MoveRight");
+        ShowList.PopulateList();
     }
 }

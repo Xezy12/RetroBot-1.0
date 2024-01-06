@@ -17,17 +17,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Check if the Spacebar is pressed
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             EnqueueMovementHistory();
         }
+        */
         
         // Move the player if there are movements in the queue
         MovePlayer();
         
     }
     
-    void EnqueueMovementHistory()
+    public void EnqueueMovementHistory()
     {
         // Retrieve the movement history from the InputManager
         List<string> movementHistory = inputManager.GetMovementHistory();
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             movementQueue.Enqueue(direction);
         }
+        inputManager.ShowAndResetMovementHistory();
     }
 
     void MovePlayer()
