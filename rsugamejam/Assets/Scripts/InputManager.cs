@@ -43,7 +43,7 @@ public class InputManager : MonoBehaviour
         }
     }
     */
-    
+
     // You can use this method to retrieve the movement history from other scripts
     public List<string> GetMovementHistory()
     {
@@ -62,6 +62,7 @@ public class InputManager : MonoBehaviour
 
         // Reset the movement history
         movementHistory.Clear();
+        ShowList.ClearList();
     }
 
     public void Up()
