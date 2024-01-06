@@ -655,7 +655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262550485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.44, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -695,7 +695,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07203615, y: 0.007203579}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -706,7 +706,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.91}
+  m_Size: {x: 0.5277827, y: 0.5786334}
   m_EdgeRadius: 0
 --- !u!114 &262550489
 MonoBehaviour:
@@ -724,6 +724,8 @@ MonoBehaviour:
   playAgainButton: {fileID: 1098753897}
   quitButton: {fileID: 147009783}
   popupAfterTheEndAnimator: {fileID: 301089187}
+  bridgeTilemap: {fileID: 590166180}
+  bridgeTile: {fileID: 11400000, guid: f63af621b3684dc4da8a44c39794751b, type: 2}
 --- !u!1 &301089185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1802724744835764132, guid: eda54f612a1cb9d499ebc9bd7102b699, type: 3}

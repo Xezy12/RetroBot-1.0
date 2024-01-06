@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class ResetSceneTrigger : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class ResetSceneTrigger : MonoBehaviour
     public Button playAgainButton;
     public Button quitButton;
     public Animator popupAfterTheEndAnimator;
+
+    public Tilemap bridgeTilemap; // Reference to your Tilemap
+    public TileBase bridgeTile; // Reference to your bridge tile
 
     private bool hasBridgeMakingItem = false;
     private PlayerInventory playerInventory;
@@ -57,6 +61,8 @@ public class ResetSceneTrigger : MonoBehaviour
                 // For example, you can disable the collider of the trap or perform other actions
                 // For demonstration purposes, we'll just print a message to the console
                 Debug.Log("Player has the bridge-making-item. Walking through the trap without triggering the popup.");
+                Vector3Int tilePosition = bridgeTilemap.WorldToCell(transform.position);
+                bridgeTilemap.SetTile(tilePosition, bridgeTile);
             }
         }
     }
