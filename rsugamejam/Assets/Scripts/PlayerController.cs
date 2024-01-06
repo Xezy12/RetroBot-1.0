@@ -9,6 +9,27 @@ public class PlayerController : MonoBehaviour
     private Queue<string> movementQueue = new Queue<string>();
     private bool cd = false; // set cooldown before walk;
     public float walkspeed = 1f;
+    public PlayerInventory inventory;
+
+    private static PlayerController _instance;
+    public static PlayerController Instance
+    {
+        get { return _instance; }
+    }
+
+    void Awake()
+    {
+        // Ensure there is only one instance of PlayerController
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -73,5 +94,18 @@ public class PlayerController : MonoBehaviour
         cd = true; // on cooldown time
         yield return new WaitForSeconds(walkspeed); // wait for walkspeed seconds
         cd = false; // cooldown finish
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("BridgeMakingItem"))
+        {
+            // Assuming that the item should be added to the player's inventory when touched
+            inventory.AddItem("BridgeMakingItem");
+
+            // Optionally, you may want to disable or destroy the GameObject with the "BridgeMakingItem" tag
+            // For demonstration purposes, we'll just deactivate it
+            other.gameObject.SetActive(false);
+        }
     }
 }

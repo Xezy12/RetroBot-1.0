@@ -9,22 +9,55 @@ public class ResetSceneTrigger : MonoBehaviour
     public Button quitButton;
     public Animator popupAfterTheEndAnimator;
 
+    private bool hasBridgeMakingItem = false;
+    private PlayerInventory playerInventory;
+
     void Start()
     {
         popupAfterTheEnd.SetActive(false);
+        // Find the PlayerController in the scene and get its PlayerInventory component
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerInventory = playerController.GetComponent<PlayerInventory>();
+        }
+        else
+        {
+            Debug.LogError("PlayerController not found in the scene.");
+        }
+    }
+
+    void Update()
+    {
+        // Check for the bridge-making-item in the player's inventory
+        if (playerInventory != null)
+        {
+            hasBridgeMakingItem = playerInventory.HasItem("BridgeMakingItem");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other != null && other.gameObject != null && other.CompareTag("Player"))
         {
-            // Trigger the "ShowPopup" animation
-            popupAfterTheEnd.SetActive(true);
-            popupAfterTheEndAnimator.SetTrigger("ShowPopup");
+            if (!hasBridgeMakingItem)
+            {
+                // Trigger the "ShowPopup" animation
+                popupAfterTheEnd.SetActive(true);
+                popupAfterTheEndAnimator.SetTrigger("ShowPopup");
 
-            // Assign functions to buttons
-            playAgainButton.onClick.AddListener(PlayAgain);
-            quitButton.onClick.AddListener(QuitGame);
+                // Assign functions to buttons
+                playAgainButton.onClick.AddListener(PlayAgain);
+                quitButton.onClick.AddListener(QuitGame);
+            }
+            // If the player has the bridge-making-item, let them walk through the trap without triggering the popup
+            else
+            {
+                // Implement the logic to allow the player to walk through the trap
+                // For example, you can disable the collider of the trap or perform other actions
+                // For demonstration purposes, we'll just print a message to the console
+                Debug.Log("Player has the bridge-making-item. Walking through the trap without triggering the popup.");
+            }
         }
     }
 
