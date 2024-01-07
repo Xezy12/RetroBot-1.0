@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using System.Collections;
 
 public class ResetSceneTrigger : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ResetSceneTrigger : MonoBehaviour
     public Button playAgainButton;
     public Button quitButton;
     public Animator popupAfterTheEndAnimator;
+    public Animator transition;
 
     public Tilemap bridgeTilemap; // Reference to your Tilemap
     public TileBase bridgeTile; // Reference to your bridge tile
@@ -70,12 +72,20 @@ public class ResetSceneTrigger : MonoBehaviour
     // Function to restart the scene
     public void PlayAgain()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
     // Function to quit the game
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        float transitionTime = 2f;
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
     }
 }
