@@ -15,11 +15,13 @@ public class InputManager : MonoBehaviour
         // HandleInput(); not in use
 
         // Check if the Spacebar is pressed
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowAndResetMovementHistory();
             ShowList.ClearList();
         }
+        */
     }
 
     /*
