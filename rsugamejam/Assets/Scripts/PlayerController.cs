@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 0.3f;
     public PlayerInventory inventory;
     public AudioSource pickupSound;
+    public AudioSource[] movementSounds;
 
     private static PlayerController _instance;
     public static PlayerController Instance
@@ -58,6 +59,13 @@ public class PlayerController : MonoBehaviour
         {
             string direction = movementQueue.Dequeue();
             StartCoroutine(MoveToPosition(direction));
+
+            // Play a random movement sound
+            if (movementSounds.Length > 0)
+            {
+                int randomIndex = Random.Range(0, movementSounds.Length);
+                movementSounds[randomIndex].Play();
+            }
         }
     }
 
@@ -101,7 +109,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitDelay()
     {
         cd = true;
-        yield return new WaitForSeconds(0.5f); // Adjust the delay time as needed
+        yield return new WaitForSeconds(0.7f); // Adjust the delay time as needed
         cd = false;
     }
 

@@ -11,6 +11,8 @@ public class ResetSceneTrigger : MonoBehaviour
     public Button quitButton;
     public Animator popupAfterTheEndAnimator;
     public Animator transition;
+    public AudioSource BridgingSFX;
+    public AudioSource FallingSFX;
 
     public Tilemap bridgeTilemap; // Reference to your Tilemap
     public TileBase bridgeTile; // Reference to your bridge tile
@@ -49,6 +51,7 @@ public class ResetSceneTrigger : MonoBehaviour
             if (!hasBridgeMakingItem)
             {
                 // Trigger the "ShowPopup" animation
+                FallingSFX.Play();
                 popupAfterTheEnd.SetActive(true);
                 popupAfterTheEndAnimator.SetTrigger("ShowPopup");
 
@@ -65,6 +68,7 @@ public class ResetSceneTrigger : MonoBehaviour
                 Debug.Log("Player has the bridge-making-item. Walking through the trap without triggering the popup.");
                 Vector3Int tilePosition = bridgeTilemap.WorldToCell(transform.position);
                 bridgeTilemap.SetTile(tilePosition, bridgeTile);
+                BridgingSFX.Play();
             }
         }
     }
