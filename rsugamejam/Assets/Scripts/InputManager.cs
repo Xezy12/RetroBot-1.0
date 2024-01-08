@@ -6,9 +6,12 @@ public class InputManager : MonoBehaviour
     private List<string> movementHistory = new List<string>();
 
     private Showlist ShowList;
+    
+    public bool Clicked;
 
     void Start(){
         ShowList = FindObjectOfType<Showlist>();
+        Clicked = false;
     }
     void Update()
     {
@@ -61,7 +64,6 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log(direction);
         }
-
         // Reset the movement history
         movementHistory.Clear();
         ShowList.ClearList();
@@ -69,25 +71,37 @@ public class InputManager : MonoBehaviour
 
     public void Up()
     {
-        movementHistory.Add("MoveUp");
-        ShowList.PopulateList();
+        if(!Clicked){
+            movementHistory.Add("MoveUp");
+            ShowList.PopulateList();
+            }
+        
     }
 
     public void Down()
     {
-        movementHistory.Add("MoveDown");
-        ShowList.PopulateList();
+        if(!Clicked){
+            movementHistory.Add("MoveDown");
+            ShowList.PopulateList();
+        }
+        
     }
 
     public void Left()
     {
-        movementHistory.Add("MoveLeft");
-        ShowList.PopulateList();
+        if(!Clicked){
+            movementHistory.Add("MoveLeft");
+            ShowList.PopulateList();
+        }
+        
     }
 
     public void Right()
     {
-        movementHistory.Add("MoveRight");
-        ShowList.PopulateList();
+        if(!Clicked){
+            movementHistory.Add("MoveRight");
+            ShowList.PopulateList();
+        }
+        
     }
 }

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Queue<string> movementQueue = new Queue<string>();
     private bool isMoving = false;
     private bool cd = false;
+
     public float walkSpeed = 0.3f;
     public PlayerInventory inventory;
     public AudioSource pickupSound;
@@ -39,7 +40,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
+        if(!inputManager.Clicked){
+            MovePlayer();
+        }
     }
 
     public void EnqueueMovementHistory()
@@ -65,6 +68,9 @@ public class PlayerController : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, movementSounds.Length);
                 movementSounds[randomIndex].Play();
+            }
+            if(movementQueue.Count <= 0){
+                inputManager.Clicked = true;
             }
         }
     }

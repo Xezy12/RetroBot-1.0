@@ -19,7 +19,7 @@ public class ResetSceneTrigger : MonoBehaviour
 
     private bool hasBridgeMakingItem = false;
     private PlayerInventory playerInventory;
-
+    private FallingEffect falleffect;
     void Start()
     {
         popupAfterTheEnd.SetActive(false);
@@ -33,6 +33,7 @@ public class ResetSceneTrigger : MonoBehaviour
         {
             Debug.LogError("PlayerController not found in the scene.");
         }
+        falleffect = FindObjectOfType<FallingEffect>();
     }
 
     void Update()
@@ -52,12 +53,8 @@ public class ResetSceneTrigger : MonoBehaviour
             {
                 // Trigger the "ShowPopup" animation
                 FallingSFX.Play();
-                popupAfterTheEnd.SetActive(true);
-                popupAfterTheEndAnimator.SetTrigger("ShowPopup");
-
-                // Assign functions to buttons
-                playAgainButton.onClick.AddListener(PlayAgain);
-                quitButton.onClick.AddListener(QuitGame);
+                falleffect.activate = true;
+                StartCoroutine(resetUI());
             }
             // If the player has the bridge-making-item, let them walk through the trap without triggering the popup
             else
@@ -71,6 +68,15 @@ public class ResetSceneTrigger : MonoBehaviour
                 BridgingSFX.Play();
             }
         }
+    }
+    IEnumerator resetUI(){
+        yield return new WaitForSeconds(falleffect.disappearTime);
+        popupAfterTheEnd.SetActive(true);
+        popupAfterTheEndAnimator.SetTrigger("ShowPopup");
+
+        // Assign functions to buttons
+        playAgainButton.onClick.AddListener(PlayAgain);
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     // Function to restart the scene
