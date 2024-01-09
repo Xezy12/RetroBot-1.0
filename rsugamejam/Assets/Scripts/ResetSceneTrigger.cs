@@ -69,7 +69,8 @@ public class ResetSceneTrigger : MonoBehaviour
             }
         }
     }
-    IEnumerator resetUI(){
+    IEnumerator resetUI()
+    {
         yield return new WaitForSeconds(falleffect.disappearTime);
         popupAfterTheEnd.SetActive(true);
         popupAfterTheEndAnimator.SetTrigger("ShowPopup");

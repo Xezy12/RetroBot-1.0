@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +18,16 @@ public class PlayerController : MonoBehaviour
     public AudioSource[] movementSounds;
 
     private static PlayerController _instance;
+
+    private Transform playerTransform;
+    private BoxCollider2D playerCollider;
+
+    public GameObject popupAfterTheEnd;
+    public Button playAgainButton;
+    public Button quitButton;
+    public Animator popupAfterTheEndAnimator;
+    public Animator transition;
+
     public static PlayerController Instance
     {
         get { return _instance; }
@@ -56,6 +68,62 @@ public class PlayerController : MonoBehaviour
         inputManager.ShowAndResetMovementHistory();
     }
 
+    private bool CheckIfPlayerReachedGoal()
+    {
+        playerCollider = GetComponent<BoxCollider2D>();
+        playerTransform = GetComponent<Transform>();
+        Vector2 playerSize = playerCollider.size;
+
+        Vector3 newPosition = playerTransform.position;
+        newPosition.x += 1f;
+        playerTransform.position = newPosition;
+
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(playerTransform.position, playerSize, 0f, LayerMask.GetMask("Goal"));
+
+        Debug.Log("Player position: " + playerTransform.position);
+        Debug.Log("Player collider size: " + playerSize);
+        Debug.Log("Number of colliders detected: " + colliders.Length);
+
+        foreach (Collider2D collider in colliders)
+        {
+            Debug.Log("Collider detected: " + collider.name + " with tag: " + collider.tag + " on layer: " + LayerMask.LayerToName(collider.gameObject.layer));
+            if (collider.CompareTag("Goal"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void resetUI()
+    {
+        popupAfterTheEnd.SetActive(true);
+        popupAfterTheEndAnimator.SetTrigger("ShowPopup");
+
+        // Assign functions to buttons
+        playAgainButton.onClick.AddListener(PlayAgain);
+        quitButton.onClick.AddListener(QuitGame);
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        float transitionTime = 2f;
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
+    }
+
+    public void PlayAgain()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     void MovePlayer()
     {
         if (movementQueue.Count > 0 && !isMoving && !cd)
@@ -71,6 +139,10 @@ public class PlayerController : MonoBehaviour
             }
             if(movementQueue.Count <= 0){
                 inputManager.Clicked = true;
+                if (!CheckIfPlayerReachedGoal())
+                {
+                    resetUI();
+                }
             }
         }
     }
