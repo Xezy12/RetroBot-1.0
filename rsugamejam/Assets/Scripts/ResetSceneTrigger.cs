@@ -20,8 +20,11 @@ public class ResetSceneTrigger : MonoBehaviour
     private bool hasBridgeMakingItem = false;
     private PlayerInventory playerInventory;
     private FallingEffect falleffect;
+    private PlayerController playercontrol;
+
     void Start()
     {
+        playercontrol = FindObjectOfType<PlayerController>();
         popupAfterTheEnd.SetActive(false);
         // Find the PlayerController in the scene and get its PlayerInventory component
         PlayerController playerController = FindObjectOfType<PlayerController>();
@@ -54,6 +57,7 @@ public class ResetSceneTrigger : MonoBehaviour
                 // Trigger the "ShowPopup" animation
                 FallingSFX.Play();
                 falleffect.activate = true;
+                playercontrol.movementQueue.Clear();
                 StartCoroutine(resetUI());
             }
             // If the player has the bridge-making-item, let them walk through the trap without triggering the popup

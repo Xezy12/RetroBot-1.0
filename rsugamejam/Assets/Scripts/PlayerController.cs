@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float tileSize = 1f;
     private InputManager inputManager;
-    private Queue<string> movementQueue = new Queue<string>();
+    public Queue<string> movementQueue = new Queue<string>();
     private bool isMoving = false;
     private bool cd = false;
 
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform playerTransform;
     private BoxCollider2D playerCollider;
+    private bool win = false;
 
     public GameObject popupAfterTheEnd;
     public Button playAgainButton;
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         inputManager.ShowAndResetMovementHistory();
     }
 
+    /*
     private bool CheckIfPlayerReachedGoal()
     {
         playerCollider = GetComponent<BoxCollider2D>();
@@ -94,7 +96,7 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
-    }
+    }*/
 
     private void resetUI()
     {
@@ -139,11 +141,19 @@ public class PlayerController : MonoBehaviour
             }
             if(movementQueue.Count <= 0){
                 inputManager.Clicked = true;
-                if (!CheckIfPlayerReachedGoal())
-                {
-                    resetUI();
-                }
+                StartCoroutine(checkwin());
             }
+        }
+    }
+
+    IEnumerator checkwin(){
+        yield return new WaitForSeconds(0.7f);
+        if (!win)
+        {
+            resetUI();
+        }
+        else{
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
         }
     }
 
@@ -198,6 +208,11 @@ public class PlayerController : MonoBehaviour
             inventory.AddItem("BridgeMakingItem");
             pickupSound.Play();
             other.gameObject.SetActive(false);
+        }
+        if(other.CompareTag("Goal")){
+            win = true;
+            Debug.Log("Success");
+            movementQueue.Clear();
         }
     }
 }
