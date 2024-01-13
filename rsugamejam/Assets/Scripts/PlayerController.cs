@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Queue<string> movementQueue = new Queue<string>();
     private bool isMoving = false;
     private bool cd = false;
+    private RaycastHit2D hit;
 
     public float walkSpeed = 0.3f;
     public PlayerInventory inventory;
@@ -163,7 +164,6 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
         Vector2 targetPosition = transform.position;
-
         switch (direction)
         {
             case "MoveUp":
@@ -207,11 +207,31 @@ public class PlayerController : MonoBehaviour
                 }
                 transform.position = targetPosition;
                 break;
+            case "Punch":
+                switch (lastdir){
+                    case "Up":
+                        targetPosition += Vector2.up * tileSize;
+                        break;
+                    case "Down":
+                        targetPosition += Vector2.down * tileSize;
+                        break;
+                    case "Left":
+                        targetPosition += Vector2.left * tileSize;
+                        break;
+                    case "Right":
+                        targetPosition += Vector2.right * tileSize;
+                        break;
+                }
+                hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
+                if(hit.collider.CompareTag("Destroyable")){
+                    Destroy(hit.collider.gameObject);
+                }
+                targetPosition = transform.position;
+                break;
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
 
-
-        if (hit.collider == null || !hit.collider.CompareTag("Obstruct"))
+        hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
+        if (hit.collider == null)
         {
             float elapsedTime = 0f;
             Vector2 startingPosition = transform.position;

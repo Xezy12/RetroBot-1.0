@@ -6,6 +6,9 @@ public class InputManager : MonoBehaviour
     private List<string> movementHistory = new List<string>();
 
     private Showlist ShowList;
+
+    [SerializeField] private int ghostnum = 1;
+    [SerializeField] private int punchnum = 1;
     
     public bool Clicked;
 
@@ -106,9 +109,19 @@ public class InputManager : MonoBehaviour
 
     public void Ghost()
     {
-        if(!Clicked){
+        if(!Clicked && ghostnum > 0){
             movementHistory.Add("Ghost");
             ShowList.PopulateList();
+            ghostnum -= 1;
+        }
+    }
+    
+    public void Punch()
+    {
+        if(!Clicked && punchnum > 0){
+            movementHistory.Add("Punch");
+            ShowList.PopulateList();
+            punchnum -= 1;
         }
     }
 }
