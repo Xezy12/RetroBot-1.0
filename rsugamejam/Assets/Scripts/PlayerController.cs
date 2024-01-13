@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Transform playerTransform;
     private BoxCollider2D playerCollider;
     private bool win = false;
+    private bool isleft = false;
+    private string lastdir;
 
     public GameObject popupAfterTheEnd;
     public Button playAgainButton;
@@ -166,29 +168,68 @@ public class PlayerController : MonoBehaviour
         {
             case "MoveUp":
                 targetPosition += Vector2.up * tileSize;
+                lastdir = "Up";
                 break;
             case "MoveDown":
                 targetPosition += Vector2.down * tileSize;
+                lastdir = "Down";
                 break;
             case "MoveLeft":
+                if(!isleft){
+                    isleft = !isleft;
+                    flip();
+                }
                 targetPosition += Vector2.left * tileSize;
+                lastdir = "Left";
                 break;
             case "MoveRight":
+                if(isleft){
+                    isleft = !isleft;
+                    flip();
+                }
                 targetPosition += Vector2.right * tileSize;
+                lastdir = "Right";
+                break;
+            case "Ghost":
+                switch (lastdir){
+                    case "Up":
+                        targetPosition += Vector2.up * tileSize * 2;
+                        break;
+                    case "Down":
+                        targetPosition += Vector2.down * tileSize * 2;
+                        break;
+                    case "Left":
+                        targetPosition += Vector2.left * tileSize * 2;
+                        break;
+                    case "Right":
+                        targetPosition += Vector2.right * tileSize * 2;
+                        break;
+                }
+                transform.position = targetPosition;
                 break;
         }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
 
-        float elapsedTime = 0f;
-        Vector2 startingPosition = transform.position;
 
-        while (elapsedTime < walkSpeed)
+        if (hit.collider == null || !hit.collider.CompareTag("Obstruct"))
         {
-            transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+            float elapsedTime = 0f;
+            Vector2 startingPosition = transform.position;
 
-        transform.position = targetPosition;
+            while (elapsedTime < walkSpeed)
+            {
+                transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = targetPosition;
+        }
+        else
+        {
+            // There is an obstacle, do not move
+            Debug.Log("Obstacle detected, cannot move!" + hit.collider.tag);
+        }
         isMoving = false;
 
         StartCoroutine(WaitDelay());
@@ -214,5 +255,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Success");
             movementQueue.Clear();
         }
+    }
+
+    void flip(){
+        // Get the current scale of the object
+        Vector3 scale = transform.localScale;
+        // Flip the x-axis
+        scale.x *= -1;
+        // Apply the new scale to the object
+        transform.localScale = scale;
     }
 }

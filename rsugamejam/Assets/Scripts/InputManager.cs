@@ -102,6 +102,13 @@ public class InputManager : MonoBehaviour
             movementHistory.Add("MoveRight");
             ShowList.PopulateList();
         }
-        
+    }
+
+    public void Ghost()
+    {
+        if(!Clicked){
+            movementHistory.Add("Ghost");
+            ShowList.PopulateList();
+        }
     }
 }
