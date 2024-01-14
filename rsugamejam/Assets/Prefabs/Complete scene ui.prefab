@@ -259,7 +259,7 @@ Transform:
   - {fileID: 9086354035146876336}
   - {fileID: 3500960947314417449}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &264193178589018843
 PrefabInstance:
@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497130402466674629, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 345
       objectReference: {fileID: 0}
     - target: {fileID: 6497130402466674629, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6995773696935171406, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 365
+      value: 510
       objectReference: {fileID: 0}
     - target: {fileID: 6995773696935171406, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -461,7 +461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7195604956808648242, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 530
+      value: 675
       objectReference: {fileID: 0}
     - target: {fileID: 7195604956808648242, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -469,7 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947873622080643612, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 365
+      value: 510
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947873622080643612, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -440
       objectReference: {fileID: 0}
     - target: {fileID: 8323071363961663747, guid: d508e21d2aaeba24093b158ec490b5c8, type: 3}
       propertyPath: m_FontData.m_MaxSize

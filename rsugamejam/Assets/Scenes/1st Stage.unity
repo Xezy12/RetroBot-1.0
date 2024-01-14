@@ -491,6 +491,30 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5903905334176860855, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 481
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903905334176860855, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -440
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663509928112275097, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663509928112275097, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825096867519577573, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 481
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825096867519577573, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -300
+      objectReference: {fileID: 0}
     - target: {fileID: 7038197094233383259, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_Type
       value: 2
@@ -498,6 +522,14 @@ PrefabInstance:
     - target: {fileID: 7038197094233383259, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316123715020758894, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 316
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316123715020758894, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 7532576974760035348, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_RootOrder
