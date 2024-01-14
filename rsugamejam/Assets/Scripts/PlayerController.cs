@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
                 }
                 hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize*2, LayerMask.GetMask("Obstruct2"));
                 if (hit.collider == null)
-                {   
+                {  
                     float elapsedTime = 0f;
                     Vector2 startingPosition = transform.position;
 
@@ -220,10 +220,23 @@ public class PlayerController : MonoBehaviour
                         elapsedTime += Time.deltaTime;
                         yield return null;
                     }
-                    transform.position = targetPosition;
+                    transform.position = targetPosition;                   
                 }
                 else{
-                    Debug.Log("There is Obstruct2");
+                    hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize*2, LayerMask.GetMask("Obstruct"));
+                    if (hit.collider == null)
+                    {  
+                        float elapsedTime = 0f;
+                        Vector2 startingPosition = transform.position;
+
+                        while (elapsedTime < walkSpeed)
+                        {
+                            transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
+                            elapsedTime += Time.deltaTime;
+                            yield return null;
+                        }
+                        transform.position = targetPosition;                   
+                    }
                 }
                 break;
             case "Punch":
