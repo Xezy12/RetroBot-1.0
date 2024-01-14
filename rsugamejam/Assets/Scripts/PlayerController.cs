@@ -56,20 +56,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!inputManager.Clicked){
-            MovePlayer();
-        }
+        MovePlayer();
+        
     }
 
     public void EnqueueMovementHistory()
     {
-        List<string> movementHistory = inputManager.GetMovementHistory();
-
-        foreach (string direction in movementHistory)
-        {
-            movementQueue.Enqueue(direction);
+        if(!inputManager.Clicked){
+            List<string> movementHistory = inputManager.GetMovementHistory();
+        
+            foreach (string direction in movementHistory)
+            {
+                movementQueue.Enqueue(direction);
+            }
+            inputManager.Clicked = true;
+            inputManager.ShowAndResetMovementHistory();
         }
-        inputManager.ShowAndResetMovementHistory();
+        
     }
 
     /*
@@ -143,14 +146,14 @@ public class PlayerController : MonoBehaviour
                 movementSounds[randomIndex].Play();
             }
             if(movementQueue.Count <= 0){
-                inputManager.Clicked = true;
+                //inputManager.Clicked = true;
                 StartCoroutine(checkwin());
             }
         }
     }
 
     IEnumerator checkwin(){
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         if (!win)
         {
             resetUI();
@@ -291,10 +294,10 @@ public class PlayerController : MonoBehaviour
         }
         if(other.CompareTag("Goal")){
             Debug.Log("Success");
-            movementQueue.Clear();
             if(inventory.HasItem("Keyitem")){
                 win = true;
             }
+            movementQueue.Clear();
         }
     }
 

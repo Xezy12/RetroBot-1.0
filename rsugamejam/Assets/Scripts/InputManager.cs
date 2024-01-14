@@ -53,9 +53,11 @@ public class InputManager : MonoBehaviour
         // Reset the movement history
         movementHistory.Clear();
         ShowList.ClearList();
-        walklimit = walkdefault;
-        punchnum = punchdefault;
-        ghostnum = ghostdefault;
+        if(!Clicked){
+            walklimit = walkdefault;
+            punchnum = punchdefault;
+            ghostnum = ghostdefault;
+        }
     }
 
     public void Up()
