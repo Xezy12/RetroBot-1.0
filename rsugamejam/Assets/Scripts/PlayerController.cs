@@ -290,9 +290,11 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
         if(other.CompareTag("Goal")){
-            win = true;
             Debug.Log("Success");
             movementQueue.Clear();
+            if(inventory.HasItem("Keyitem")){
+                win = true;
+            }
         }
     }
 

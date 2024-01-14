@@ -10,13 +10,13 @@ public class Showlist : MonoBehaviour
     public List<string> itemList = new List<string>(); // Your list of items
     public InputManager inputManager;
 
-    [SerializeField] float y = 10f;
-    [SerializeField] float x = -500f;
+    [SerializeField] float y = 160f;
+    [SerializeField] float x = -80f;
     [SerializeField] float startY;
     [SerializeField] float startX;
 
     // Set the threshold for starting a new column
-    [SerializeField] float columnThresholdY = -250f;
+    [SerializeField] float columnThresholdY = -180f;
 
     public void PopulateList()
     {

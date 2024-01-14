@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InputManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] private int ghostdefault = 1;
     [SerializeField] private int punchdefault = 1;
     [SerializeField] private int walkdefault = 10;
+    [SerializeField] private TMP_Text ghostie;
+    [SerializeField] private TMP_Text walkie;
+    [SerializeField] private TMP_Text punchie;
+
     private int walklimit;
     private int punchnum;
     private int ghostnum;
@@ -25,39 +30,10 @@ public class InputManager : MonoBehaviour
     }
     void Update()
     {
-        // HandleInput(); not in use
-
-        // Check if the Spacebar is pressed
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowAndResetMovementHistory();
-            ShowList.ClearList();
-        }
-        */
+        ghostie.text = ghostnum.ToString();
+        punchie.text = punchnum.ToString();
+        walkie.text = walklimit.ToString();
     }
-
-    /*
-    void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Up();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Down();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Left();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Right();
-        }
-    }
-    */
 
     // You can use this method to retrieve the movement history from other scripts
     public List<string> GetMovementHistory()
