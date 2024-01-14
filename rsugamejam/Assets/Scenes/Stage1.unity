@@ -226,7 +226,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.91}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.96, y: 0.91}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 2a01c5b43f5a0dd4396f2f7a1813c034, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e288b500e93e3f45954e77084965be3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -296,7 +296,7 @@ Transform:
   m_GameObject: {fileID: 123901542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5143814, y: -1.5034138, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 710102435}
   - component: {fileID: 710102434}
   m_Layer: 0
-  m_Name: BridgeMaker
+  m_Name: Scrap
   m_TagString: BridgeMakingItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,18 +774,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14279509, y: 0}
+  m_Offset: {x: 0.017704815, y: 0.015636027}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 6.83}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 10.24, y: 6.83}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.384102, y: 6.83}
+  m_Size: {x: 1.0044963, y: 0.91948366}
   m_EdgeRadius: 0
 --- !u!212 &710102435
 SpriteRenderer:
@@ -828,7 +828,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: cde5e0c77719ccb4f8c637997727f89c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d39b1fb9b86007d47b11680e0b36ae43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -848,7 +848,7 @@ Transform:
   m_GameObject: {fileID: 710102433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.54, y: -2.51, z: 0}
-  m_LocalScale: {x: 0.0740273, y: 0.0740273, z: 0.0740273}
+  m_LocalScale: {x: 1.0150623, y: 1.0150623, z: 1.0150623}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
