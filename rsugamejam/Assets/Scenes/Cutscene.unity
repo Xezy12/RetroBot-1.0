@@ -371,7 +371,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &283589646
 RectTransform:
@@ -517,6 +517,14 @@ PlayableDirector:
     value: {fileID: 1888578941}
   - key: {fileID: -6531911254966392771, guid: 8cb6ef8a805e81b40b2054c15d03cbda, type: 2}
     value: {fileID: 1601509803}
+  - key: {fileID: -6279645939409527108, guid: 8cb6ef8a805e81b40b2054c15d03cbda, type: 2}
+    value: {fileID: 1850620459}
+  - key: {fileID: 4915587892103833225, guid: 8cb6ef8a805e81b40b2054c15d03cbda, type: 2}
+    value: {fileID: 1205885361}
+  - key: {fileID: 6273105373175685994, guid: 8cb6ef8a805e81b40b2054c15d03cbda, type: 2}
+    value: {fileID: 1125051768}
+  - key: {fileID: -3760270692641447447, guid: 8cb6ef8a805e81b40b2054c15d03cbda, type: 2}
+    value: {fileID: 1533893885}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1039940198
@@ -1037,7 +1045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533893886
 RectTransform:
   m_ObjectHideFlags: 0

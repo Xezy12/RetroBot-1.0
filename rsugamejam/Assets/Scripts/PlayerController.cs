@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator checkwin(){
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         if (!win)
         {
             resetUI();
