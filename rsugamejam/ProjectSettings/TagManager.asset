@@ -8,6 +8,7 @@ TagManager:
   - fall
   - Goal
   - Obstruct
+  - Destroyable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Goal
   - Obstruct
-  - 
+  - Obstruct2
   - 
   - 
   - 

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D playerCollider;
     private bool win = false;
     private bool isleft = false;
-    private string lastdir;
+    private string lastdir = "Right";
 
     public GameObject popupAfterTheEnd;
     public Button playAgainButton;
@@ -205,7 +205,23 @@ public class PlayerController : MonoBehaviour
                         targetPosition += Vector2.right * tileSize * 2;
                         break;
                 }
-                transform.position = targetPosition;
+                hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize*2, LayerMask.GetMask("Obstruct2"));
+                if (hit.collider == null)
+                {   
+                    float elapsedTime = 0f;
+                    Vector2 startingPosition = transform.position;
+
+                    while (elapsedTime < walkSpeed)
+                    {
+                        transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
+                        elapsedTime += Time.deltaTime;
+                        yield return null;
+                    }
+                    transform.position = targetPosition;
+                }
+                else{
+                    Debug.Log("There is Obstruct2");
+                }
                 break;
             case "Punch":
                 switch (lastdir){
@@ -233,6 +249,8 @@ public class PlayerController : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
         if (hit.collider == null)
         {
+            hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct2"));
+            if(hit.collider == null){
             float elapsedTime = 0f;
             Vector2 startingPosition = transform.position;
 
@@ -244,6 +262,7 @@ public class PlayerController : MonoBehaviour
             }
 
             transform.position = targetPosition;
+            }
         }
         else
         {

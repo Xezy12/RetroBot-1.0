@@ -7,12 +7,19 @@ public class InputManager : MonoBehaviour
 
     private Showlist ShowList;
 
-    [SerializeField] private int ghostnum = 1;
-    [SerializeField] private int punchnum = 1;
+    [SerializeField] private int ghostdefault = 1;
+    [SerializeField] private int punchdefault = 1;
+    [SerializeField] private int walkdefault = 10;
+    private int walklimit;
+    private int punchnum;
+    private int ghostnum;
     
     public bool Clicked;
 
     void Start(){
+        walklimit = walkdefault;
+        punchnum = punchdefault;
+        ghostnum = ghostdefault;
         ShowList = FindObjectOfType<Showlist>();
         Clicked = false;
     }
@@ -70,40 +77,47 @@ public class InputManager : MonoBehaviour
         // Reset the movement history
         movementHistory.Clear();
         ShowList.ClearList();
+        walklimit = walkdefault;
+        punchnum = punchdefault;
+        ghostnum = ghostdefault;
     }
 
     public void Up()
     {
-        if(!Clicked){
+        if(!Clicked && walklimit > 0){
             movementHistory.Add("MoveUp");
             ShowList.PopulateList();
+            walklimit -= 1;
             }
         
     }
 
     public void Down()
     {
-        if(!Clicked){
+        if(!Clicked && walklimit > 0){
             movementHistory.Add("MoveDown");
             ShowList.PopulateList();
+            walklimit -= 1;
         }
         
     }
 
     public void Left()
     {
-        if(!Clicked){
+        if(!Clicked && walklimit > 0){
             movementHistory.Add("MoveLeft");
             ShowList.PopulateList();
+            walklimit -= 1;
         }
         
     }
 
     public void Right()
     {
-        if(!Clicked){
+        if(!Clicked && walklimit > 0){
             movementHistory.Add("MoveRight");
             ShowList.PopulateList();
+            walklimit -= 1;
         }
     }
 
