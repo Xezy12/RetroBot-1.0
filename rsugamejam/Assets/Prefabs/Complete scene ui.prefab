@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223227873094676682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c413091c8380214e9598fae5d62c41a, type: 3}
   m_Name: 
@@ -259,7 +259,7 @@ Transform:
   - {fileID: 9086354035146876336}
   - {fileID: 3500960947314417449}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &264193178589018843
 PrefabInstance:
@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2606807479095119815, guid: ce0e2ed5a7e5c20438ff76a71f9ba28b, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 4223227873094676682}
     - target: {fileID: 2606807479095119815, guid: ce0e2ed5a7e5c20438ff76a71f9ba28b, type: 3}
       propertyPath: quitButton
       value: 

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool win = false;
     private bool isleft = false;
     private string lastdir = "Right";
+    [SerializeField]private GameObject Camera;
 
     public GameObject popupAfterTheEnd;
     public Button playAgainButton;
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public void EnqueueMovementHistory()
     {
+        Camera.GetComponent<CameraController>().enabled = true;
         if(!inputManager.Clicked){
             List<string> movementHistory = inputManager.GetMovementHistory();
         
