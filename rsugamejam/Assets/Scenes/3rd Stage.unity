@@ -1052,7 +1052,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 704716217321209515, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: walkdefault
-      value: 23
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 704716217321209515, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: punchdefault
