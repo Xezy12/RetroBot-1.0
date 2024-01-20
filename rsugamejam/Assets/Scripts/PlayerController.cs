@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D playerCollider;
     private bool win = false;
     private bool isleft = false;
+    public bool lasersw = false;
     private string lastdir = "Right";
     [SerializeField]private GameObject Camera;
 
@@ -161,6 +162,7 @@ public class PlayerController : MonoBehaviour
             resetUI();
         }
         else{
+            
             StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
         }
     }
@@ -262,6 +264,7 @@ public class PlayerController : MonoBehaviour
                 }
                 targetPosition = transform.position;
                 break;
+            
         }
 
         hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
@@ -288,7 +291,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Obstacle detected, cannot move!" + hit.collider.tag);
         }
         isMoving = false;
-
+        lasersw = true;
         StartCoroutine(WaitDelay());
     }
 
