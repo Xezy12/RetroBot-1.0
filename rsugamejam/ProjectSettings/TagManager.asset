@@ -9,6 +9,8 @@ TagManager:
   - Goal
   - Obstruct
   - Destroyable
+  - Laser
+  - Laser2
   layers:
   - Default
   - TransparentFX

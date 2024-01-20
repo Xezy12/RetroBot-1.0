@@ -17,14 +17,14 @@ public class PlayerController : MonoBehaviour
     public PlayerInventory inventory;
     public AudioSource pickupSound;
     public AudioSource[] movementSounds;
-
+    private SpriteRenderer spriteRenderer;
     private static PlayerController _instance;
 
     private Transform playerTransform;
     private BoxCollider2D playerCollider;
     private bool win = false;
     private bool isleft = false;
-    public bool lasersw = false;
+    public LaserController lasersw;
     private string lastdir = "Right";
     [SerializeField]private GameObject Camera;
 
@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        lasersw = FindObjectOfType<LaserController>(); 
     }
 
     void Update()
@@ -291,14 +293,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Obstacle detected, cannot move!" + hit.collider.tag);
         }
         isMoving = false;
-        lasersw = true;
         StartCoroutine(WaitDelay());
     }
 
     IEnumerator WaitDelay()
     {
         cd = true;
+        lasersw.switching();
         yield return new WaitForSeconds(0.7f); // Adjust the delay time as needed
+        
         cd = false;
     }
 
@@ -320,11 +323,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void flip(){
-        // Get the current scale of the object
-        Vector3 scale = transform.localScale;
-        // Flip the x-axis
-        scale.x *= -1;
-        // Apply the new scale to the object
-        transform.localScale = scale;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 }

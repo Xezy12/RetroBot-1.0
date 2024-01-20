@@ -57,6 +57,7 @@ public class ResetSceneTrigger : MonoBehaviour
                 // Trigger the "ShowPopup" animation
                 FallingSFX.Play();
                 falleffect.activate = true;
+                Destroy(playercontrol.popupAfterTheEnd);
                 playercontrol.movementQueue.Clear();
                 StartCoroutine(resetUI());
             }
