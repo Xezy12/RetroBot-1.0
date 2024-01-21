@@ -18,12 +18,8 @@ public class LevelSelector : MonoBehaviour
     {
         string currentLevelName = "Level " + level.ToString();
 
-        if (IsPreviousLevelCleared(level+3))
+        if (IsPreviousLevelCleared(level))
         {
-            // Set the current level as cleared
-            PlayerPrefs.SetInt(currentLevelName + "_Cleared", 1);
-            PlayerPrefs.Save(); // Save PlayerPrefs to make changes permanent
-
             int targetSceneIndex = level+3;
             StartCoroutine(LoadLevel(targetSceneIndex));
         }

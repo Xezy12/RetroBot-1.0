@@ -163,8 +163,12 @@ public class PlayerController : MonoBehaviour
         {
             resetUI();
         }
-        else{
-            
+        else
+        {
+            string currentLevelName = SceneManager.GetActiveScene().name;
+            // Set the current level as cleared
+            PlayerPrefs.SetInt(currentLevelName + "_Cleared", 1);
+            PlayerPrefs.Save(); // Save PlayerPrefs to make changes permanent
             StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
         }
     }

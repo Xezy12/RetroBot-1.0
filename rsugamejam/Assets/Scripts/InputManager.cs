@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class InputManager : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class InputManager : MonoBehaviour
     private int ghostnum;
     
     public bool Clicked;
+    public Animator transition;
 
     void Start(){
         walklimit = walkdefault;
@@ -114,6 +117,28 @@ public class InputManager : MonoBehaviour
             movementHistory.Add("Punch");
             ShowList.PopulateList();
             punchnum -= 1;
+        }
+    }
+
+    public void BacktoMenu()
+    {
+        StartCoroutine(LoadLevel(3));
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        float transitionTime = 2f;
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+
+        // Check if the scene index is valid
+        if (levelIndex >= 0 && levelIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(levelIndex);
+        }
+        else
+        {
+            Debug.LogError("Invalid scene index: " + levelIndex);
         }
     }
 }
