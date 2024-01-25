@@ -104,7 +104,6 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
-
     public void QuitGame()
     {
         Application.Quit();
