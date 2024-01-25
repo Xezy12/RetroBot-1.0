@@ -11,6 +11,8 @@ public class Laser : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        
+        if(other.CompareTag("Laser") || other.CompareTag("Laser2")){
+            player.movementQueue.Clear();
+        }
     }
 }
