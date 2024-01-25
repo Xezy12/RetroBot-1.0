@@ -80,35 +80,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    /*
-    private bool CheckIfPlayerReachedGoal()
-    {
-        playerCollider = GetComponent<BoxCollider2D>();
-        playerTransform = GetComponent<Transform>();
-        Vector2 playerSize = playerCollider.size;
-
-        Vector3 newPosition = playerTransform.position;
-        newPosition.x += 1f;
-        playerTransform.position = newPosition;
-
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(playerTransform.position, playerSize, 0f, LayerMask.GetMask("Goal"));
-
-        Debug.Log("Player position: " + playerTransform.position);
-        Debug.Log("Player collider size: " + playerSize);
-        Debug.Log("Number of colliders detected: " + colliders.Length);
-
-        foreach (Collider2D collider in colliders)
-        {
-            Debug.Log("Collider detected: " + collider.name + " with tag: " + collider.tag + " on layer: " + LayerMask.LayerToName(collider.gameObject.layer));
-            if (collider.CompareTag("Goal"))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }*/
-
     private void resetUI()
     {
         popupAfterTheEnd.SetActive(true);
@@ -154,6 +125,9 @@ public class PlayerController : MonoBehaviour
                 //inputManager.Clicked = true;
                 StartCoroutine(checkwin());
             }
+        }
+        if(movementQueue.Count <= 0 && inputManager.Clicked){
+            StartCoroutine(checkwin());
         }
     }
 
@@ -226,11 +200,25 @@ public class PlayerController : MonoBehaviour
 
                     while (elapsedTime < walkSpeed)
                     {
+                        // Calculate the alpha value based on the elapsed time
+                        float alpha = Mathf.Lerp(1f, 0f, elapsedTime / walkSpeed);
+
+                        // Set the object's transparency
+                        Color currentColor = GetComponent<SpriteRenderer>().color;
+                        currentColor.a = alpha;
+                        GetComponent<SpriteRenderer>().color = currentColor;
+
+                        // Move the object
                         transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
                         elapsedTime += Time.deltaTime;
                         yield return null;
                     }
-                    transform.position = targetPosition;                   
+
+                    // Set final position and reset transparency
+                    transform.position = targetPosition;
+                    Color finalColor = GetComponent<SpriteRenderer>().color;
+                    finalColor.a = 1f;
+                    GetComponent<SpriteRenderer>().color = finalColor;               
                 }
                 else{
                     hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize*2, LayerMask.GetMask("Obstruct"));
@@ -241,11 +229,25 @@ public class PlayerController : MonoBehaviour
 
                         while (elapsedTime < walkSpeed)
                         {
+                            // Calculate the alpha value based on the elapsed time
+                            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / walkSpeed);
+
+                            // Set the object's transparency
+                            Color currentColor = GetComponent<SpriteRenderer>().color;
+                            currentColor.a = alpha;
+                            GetComponent<SpriteRenderer>().color = currentColor;
+
+                            // Move the object
                             transform.position = Vector2.Lerp(startingPosition, targetPosition, elapsedTime / walkSpeed);
                             elapsedTime += Time.deltaTime;
                             yield return null;
                         }
-                        transform.position = targetPosition;                   
+
+                        // Set final position and reset transparency
+                        transform.position = targetPosition;
+                        Color finalColor = GetComponent<SpriteRenderer>().color;
+                        finalColor.a = 1f;
+                        GetComponent<SpriteRenderer>().color = finalColor;                  
                     }
                 }
                 break;
