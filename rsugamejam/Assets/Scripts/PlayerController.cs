@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool isMoving = false;
     private bool cd = false;
     private RaycastHit2D hit;
+    private Animator animator;
 
     public float walkSpeed = 0.3f;
     public PlayerInventory inventory;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         inputManager = FindObjectOfType<InputManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         lasersw = FindObjectOfType<LaserController>(); 
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -156,26 +158,23 @@ public class PlayerController : MonoBehaviour
             case "MoveUp":
                 targetPosition += Vector2.up * tileSize;
                 lastdir = "Up";
+                animator.SetTrigger("Back");
                 break;
             case "MoveDown":
                 targetPosition += Vector2.down * tileSize;
                 lastdir = "Down";
+                animator.SetTrigger("Front");
                 break;
             case "MoveLeft":
-                if(!isleft){
-                    isleft = !isleft;
-                    flip();
-                }
                 targetPosition += Vector2.left * tileSize;
                 lastdir = "Left";
+                animator.SetTrigger("Left");
                 break;
             case "MoveRight":
-                if(isleft){
-                    isleft = !isleft;
-                    flip();
-                }
+                
                 targetPosition += Vector2.right * tileSize;
                 lastdir = "Right";
+                animator.SetTrigger("Right");
                 break;
             case "Ghost":
                 switch (lastdir){
@@ -274,7 +273,7 @@ public class PlayerController : MonoBehaviour
                 break;
             
         }
-
+        
         hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, tileSize, LayerMask.GetMask("Obstruct"));
         if (hit.collider == null)
         {
@@ -328,7 +327,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void flip(){
-        spriteRenderer.flipX = !spriteRenderer.flipX;
-    }
 }
