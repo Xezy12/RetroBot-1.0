@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 96916068}
   - component: {fileID: 96916067}
   m_Layer: 5
-  m_Name: robo
+  m_Name: explode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b6464641748716b44a7b2cc29340b4c2, type: 3}
+  m_Texture: {fileID: 2800000, guid: f4d352958af4b12428fba478985e3d6d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 524878359}
   - component: {fileID: 524878358}
   m_Layer: 5
-  m_Name: explod
+  m_Name: fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f4d352958af4b12428fba478985e3d6d, type: 3}
+  m_Texture: {fileID: 2800000, guid: af7375dea24af5c4c8ccf6e0d523c9f0, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -521,7 +521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 42.266632}
+  m_AnchoredPosition: {x: 0, y: -34.2}
   m_SizeDelta: {x: 1698.8652, y: 93.6562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125051770
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: But the experiment was failed leads it to explosion
+  m_text: Fortunately, no one was harmed, but crucial parts of the experiment were
+    lost.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
   m_sharedMaterial: {fileID: -1011472666068171005, guid: 51016466a0db3d54d93479edc6adc76b, type: 2}
@@ -554,7 +555,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -571,8 +572,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -680,7 +681,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 102.5766, y: 103.582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1132087064
 MonoBehaviour:
@@ -753,7 +754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35.578278}
+  m_AnchoredPosition: {x: 0, y: 41.5}
   m_SizeDelta: {x: 1698.8652, y: 93.6562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205885363
@@ -776,9 +777,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This here is our work-in-progress RetroBot, a glimpse into the fusion of
-    body and intelligence crafted using the latest technology. This RetroBot is designed
-    to help and care human in many ways
+  m_text: Meanwhile, a malfunction occurred with the equipment of one scientist,
+    resulting in an explosion.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
   m_sharedMaterial: {fileID: -1011472666068171005, guid: 51016466a0db3d54d93479edc6adc76b, type: 2}
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -805,8 +805,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 1377698640}
   - component: {fileID: 1377698639}
   m_Layer: 5
-  m_Name: fall
+  m_Name: robo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: af7375dea24af5c4c8ccf6e0d523c9f0, type: 3}
+  m_Texture: {fileID: 2800000, guid: b6464641748716b44a7b2cc29340b4c2, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1010,7 +1010,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rocks, the building. Alarms blare, and debris scatters across the laboratory.
+  m_text: Now it is our duty, Dr. Emilia and our robot Pickles, to embark on a mission
+    to retrieve these vital components.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
   m_sharedMaterial: {fileID: -1011472666068171005, guid: 51016466a0db3d54d93479edc6adc76b, type: 2}
@@ -1037,8 +1038,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1327,7 +1328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3.1719005}
   m_SizeDelta: {x: 1698.8652, y: 93.6562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601509805
@@ -1350,8 +1351,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Luxurious ambiance of a grand hotel-sized building. The air is filled with
-    freshness, and the surroundings exude a sense of tranquility.
+  m_text: '
+
+    In 1982, the science fiction writer Isaac Asimov gave an interview
+    on a show about his interest in the future, specifically "understanding the workings
+    of the human brain through computers and artificial intelligence." This brief
+    statement, lasting less than a minute, sparked global interest in the scientific
+    community.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
   m_sharedMaterial: {fileID: -8297097675222973293, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
@@ -1701,8 +1707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Just across the expansive lobby, But the truth is it has secret laboratory,
-    where the real action takes place.
+  m_text: At some point, a group of scientists gathered at a hotel to exchange ideas.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 681c67ba3d45e4d46af401c761f418fb, type: 2}
   m_sharedMaterial: {fileID: -1011472666068171005, guid: 51016466a0db3d54d93479edc6adc76b, type: 2}
@@ -1712,7 +1717,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1729,8 +1734,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
