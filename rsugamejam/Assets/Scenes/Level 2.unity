@@ -3433,6 +3433,14 @@ PrefabInstance:
       propertyPath: punchdefault
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3500960947314417449, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.30762672
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500960947314417449, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15026587
+      objectReference: {fileID: 0}
     - target: {fileID: 5116324611685915037, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.81

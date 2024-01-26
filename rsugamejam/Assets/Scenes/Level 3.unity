@@ -992,7 +992,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 704716217321209515, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: walkdefault
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 704716217321209515, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: ghostdefault
@@ -1002,13 +1002,21 @@ PrefabInstance:
       propertyPath: punchdefault
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3500960947314417449, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.30762672
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500960947314417449, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15026587
+      objectReference: {fileID: 0}
     - target: {fileID: 5116324611685915037, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.73
+      value: -3.809965
       objectReference: {fileID: 0}
     - target: {fileID: 5116324611685915037, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65
+      value: 0.63223004
       objectReference: {fileID: 0}
     - target: {fileID: 7532576974760035348, guid: 7678ccc708a697443a65884b1f0d6bb3, type: 3}
       propertyPath: m_RootOrder
@@ -1810,6 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Teleport2: {fileID: 1182008815}
+  teleportCooldown: 3
 --- !u!212 &832105249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3011,6 +3020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Teleport2: {fileID: 832105246}
+  teleportCooldown: 3
 --- !u!212 &1182008818
 SpriteRenderer:
   m_ObjectHideFlags: 0
